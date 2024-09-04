@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Custom Chocolate Pack</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="navbar">
+        <ul>
+            <li> Add Chocolates In Your Pack</li>
+        </ul>
+    </div>
+  <div class="container">
+    
+    
+    <div id="item-list">
+      <!-- Product items will be dynamically generated here -->
+    </div>
+    
+    <div class="summary">
+      <h2>Detils For Packed Chocolate</h2>
+      <ul id="calculation"></ul>
+      <div class="total-price" id="total-price">0.00</div>
+      <button id="checkout-btn">Ok To Buy</button>
+    </div>
+    
+  </div>
+
+  <script>
+    const products = [
+      { id: 1, name: 'DAIRY MILK', price: 30 , img:'images/dairmilk.png'},
+      { id: 2, name: '5-STAR', price: 50 , img:'images/star.jpg'},
+      { id: 3, name: 'MILKYWAY', price: 40, img:'images/mikyway.jpg'},
+    ];
+    
+    // Initialize variables
+    let selectedItems = [];
+    
+    // Function to render product list
+    function renderProductList() {
+      const productList = document.getElementById('item-list');
+      productList.innerHTML = products.map(product => `
+        <div class="product">
+            <img src="${product.img}"/>
+          <h3>${product.name}</h3>
+          <p>price/pack ${product.price.toFixed(2)}</p>
+          <input type="number" min="0" max="8" id="quantity-${product.id}" value="0">
+          <button onclick="addItem(${product.id})">Add to Pack</button>
+        </div>
+      `).join('');
+    }
+    
+    function addItem(productId) {
+      const quantityInput = document.getElementById(`quantity-${productId}`);
+      const quantity = parseInt(quantityInput.value);
+      if (isNaN(quantity) || quantity <= 0) return;
+      
+      const product = products.find(p => p.id === productId);
+      const existingItem = selectedItems.find(item => item.product.id === productId);
+      
+      if (existingItem) {
+        existingItem.quantity = quantity;
+      } else {
+        selectedItems.push({ product, quantity });
+      }
+    
+      updateCalculation();
+    }
+    
+    function updateCalculation() {
+      const summaryList = document.getElementById('calculation');
+      const totalPriceElement = document.getElementById('total-price');
+      
+      const validItems = selectedItems.filter(item => item.quantity > 0);
+      if (validItems.length > 8) {
+        alert('You can only select up to 8 items.');
+        return;
+      }
+      
+      summaryList.innerHTML = validItems.map(item => `
+        <li>${item.product.name}: ${item.quantity}</li>
+      `).join('');
+      
+      const totalPrice = validItems.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
+      totalPriceElement.textContent = `total amount = ${totalPrice.toFixed(2)}`;
+    }
+    renderProductList();
+  </script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+
+  
+  body {
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-color: #f9f9f9;
+  }
+  .navbar{
+    width: 100%;
+    background: hsl(28, 65%, 49%);
+    height:10vh;
+    overflow: hidden;
+    margin-top:-5px;
+   
+}
+.navbar ul li{
+    list-style: none;
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Courier New', Courier, monospace;
+    font-weight: bolder;
+}
+  header {
+    background-color: #3e3e3e;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+  }
+  
+  header h1 {
+    font-size: 2em;
+    margin: 0;
+  }
+  
+  .container {
+    width: 100vw;
+    height: 80vh;
+    margin: auto;
+  }
+  
+  main {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  
+  #product-selection {
+    flex: 2;
+  }
+  
+  #item-list {
+    display: flex;
+    flex-direction: row;
+    overflow-x:hidden; /* Allows horizontal scrolling if there are too many items */
+    gap: 20px; /* Adjust space between items as needed */
+    padding: 10px;/
+  }
+  
+  .product {
+
+    background: #e8b5b5; 
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 10px;
+    width: calc(33% - 20px);
+    margin: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+  } 
+  
+  .product img {
+    height: 100px;
+    max-width: 100%;
+    border-radius: 8px;
+  }
+  
+  .product h3 {
+    font-size: 1.2em;
+    margin: 10px 0;
+  }
+  
+  .product p {
+    font-size: 1em;
+    color: #777;
+  }
+  
+  input[type="number"] {
+    width: 60px;
+    padding: 5px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  button {
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1em;
+  }
+  
+  button:hover {
+    background-color: #45a049;
+  }
+  
+  .summary {
+    flex: 1;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  }
+  
+  .summary h2 {
+    font-size: 1.5em;
+    margin-bottom: 10px;
+  }
+  
+  .calculation {
+    list-style: none;
+    margin-bottom: 20px;
+  }
+  
+  .calculation li {
+    margin-bottom: 5px;
+  }
+  
+  .total-price {
+    font-size: 1.5em;
+    margin-bottom: 20px;
+  }
+  
+  .checkout-btn {
+    background-color: #007bff;
+    border: none;
+    padding: 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    font-size: 1.2em;
+    width: 100%;
+  }
+  
+  .checkout-btn:hover {
+    background-color: #0056b3;
+  }
+  
+  @media (max-width: 600px) {
+    .product {
+      width: calc(50% - 20px);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .product {
+      width: 100%;
+    }
+  }
+  
